@@ -1,0 +1,3 @@
+[submodule "Wag"]
+	path = Wag
+	url = https://github.com/BlueHuskyStudios/Wag.git
