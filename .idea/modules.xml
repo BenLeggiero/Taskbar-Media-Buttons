@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Wag/Blue-Base/JVM/Blue Base.iml" filepath="$PROJECT_DIR$/Wag/Blue-Base/JVM/Blue Base.iml" group="Libraries" />
+      <module fileurl="file://$PROJECT_DIR$/Wag/Husky-IO/JVM/Husky IO.iml" filepath="$PROJECT_DIR$/Wag/Husky-IO/JVM/Husky IO.iml" group="Libraries" />
+      <module fileurl="file://$PROJECT_DIR$/Wag/Husky-UI/JVM/Husky UI.iml" filepath="$PROJECT_DIR$/Wag/Husky-UI/JVM/Husky UI.iml" group="Libraries" />
+      <module fileurl="file://$PROJECT_DIR$/Taskbar Media Buttons.iml" filepath="$PROJECT_DIR$/Taskbar Media Buttons.iml" group="App" />
+      <module fileurl="file://$PROJECT_DIR$/Wag/JVM/Wag.iml" filepath="$PROJECT_DIR$/Wag/JVM/Wag.iml" group="Libraries" />
+    </modules>
+  </component>
+</project>
