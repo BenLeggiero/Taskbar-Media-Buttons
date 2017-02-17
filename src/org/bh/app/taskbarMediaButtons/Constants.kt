@@ -9,4 +9,5 @@ package org.bh.app.taskbarMediaButtons
 
 object Constants {
     val appName = "Taskbar Media Buttons"
+    val executableName = "TaskbarMediaButtons"
 }

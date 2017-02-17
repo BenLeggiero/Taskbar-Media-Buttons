@@ -17,7 +17,7 @@ import javax.swing.JOptionPane
 class AppDelegate {
     fun start(args: Array<String>) {
         if (!SystemTray.isSupported()) {
-            val message = "${Constants.appName} is not supported on your computer."
+            val message = "${Constants.appName} is not supported on your computer.\nPlease try one that supports the system tray (taskbar, menu bar, etc.)"
             log.severe(message)
             JOptionPane.showMessageDialog(null, message, Constants.appName, JOptionPane.ERROR_MESSAGE)
             System.exit(0)
