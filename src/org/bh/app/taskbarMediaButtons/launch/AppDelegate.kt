@@ -15,7 +15,7 @@ import javax.swing.JOptionPane
  * @since 2017-02-16 016.
  */
 class AppDelegate {
-    fun start() {
+    fun start(args: Array<String>) {
         if (!SystemTray.isSupported()) {
             val message = "${Constants.appName} is not supported on your computer."
             log.severe(message)
@@ -23,6 +23,8 @@ class AppDelegate {
             System.exit(0)
             return
         }
+
+        CommandLineArgumentProcessor.process(args)
 
         TMBStateController.shared {
             val icons = currentState().systemTrayIcons

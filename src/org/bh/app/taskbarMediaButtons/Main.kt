@@ -1,7 +1,7 @@
 package org.bh.app.taskbarMediaButtons
 
 import org.bh.app.taskbarMediaButtons.launch.AppDelegate
-import org.bh.app.taskbarMediaButtons.launch.commandLineArgumentProcessor
+import org.bh.app.taskbarMediaButtons.launch.CommandLineArgumentProcessor
 
 /**
  * @author Ben Leggiero
@@ -9,6 +9,5 @@ import org.bh.app.taskbarMediaButtons.launch.commandLineArgumentProcessor
  */
 
 fun main(args: Array<String>) {
-    commandLineArgumentProcessor.process(args)
-    AppDelegate().start()
+    AppDelegate().start(args)
 }
