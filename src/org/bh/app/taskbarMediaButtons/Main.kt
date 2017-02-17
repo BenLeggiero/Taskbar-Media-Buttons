@@ -4,7 +4,7 @@ import org.bh.app.taskbarMediaButtons.launch.AppDelegate
 import org.bh.app.taskbarMediaButtons.launch.commandLineArgumentProcessor
 
 /**
- * @author Kyli Rouge
+ * @author Ben Leggiero
  * @since 2017-02-16
  */
 

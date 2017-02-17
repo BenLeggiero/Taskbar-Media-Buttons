@@ -1,17 +1,23 @@
 package org.bh.app.taskbarMediaButtons.io
 
-import org.bh.app.taskbarMediaButtons.state.TMBState
+import org.bh.app.taskbarMediaButtons.state.TMBRawState
+import org.bh.app.taskbarMediaButtons.ui.SystemTrayIcon
 import org.bh.tools.base.struct.DataAccessor
 
 /**
- * @author Kyli Rouge
- * @since 2017-02-16 016.
+ * @author Ben Leggiero
+ * @since 2017-02-16
  */
-class TMBDataAccessor : DataAccessor<TMBState, TMBDataAccessor.Details, TMBDataAccessor.Status> {
+class TMBDataAccessor : DataAccessor<TMBRawState, TMBDataAccessor.Details, TMBDataAccessor.Status> {
 
 
-    override fun accessData(details: Details, didAccessData: (accessedData: TMBState?, status: Status) -> Unit) {
-        didAccessData(null, Status.successful) // FIXME: Actually access data
+    override fun accessData(details: Details, didAccessData: (accessedData: TMBRawState?, status: Status) -> Unit) {
+        didAccessData(TMBRawState.default, Status.successful) // FIXME: Actually access data
+    }
+
+
+    companion object {
+        val shared = TMBDataAccessor()
     }
 
 
@@ -34,3 +40,8 @@ class TMBDataAccessor : DataAccessor<TMBState, TMBDataAccessor.Details, TMBDataA
 }
 
 
+
+val TMBRawState.Companion.default by lazy { TMBRawState(defaultTrayIcons, defaultIsDebugMode) }
+
+private val defaultTrayIcons: List<SystemTrayIcon> = listOf()
+private val defaultIsDebugMode = false

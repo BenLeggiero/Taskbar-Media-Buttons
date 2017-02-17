@@ -1,8 +1,11 @@
 package org.bh.app.taskbarMediaButtons.ui
 
+import java.awt.TrayIcon
+
 /**
- * @author Kyli Rouge
- * @since 2017-02-16 016.
+ * @author Ben Leggiero
+ * @since 2017-02-16
  */
-class SystemTrayIcon {
+interface SystemTrayIcon {
+    val awtValue: TrayIcon
 }

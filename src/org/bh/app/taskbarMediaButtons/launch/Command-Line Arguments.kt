@@ -1,17 +1,23 @@
 package org.bh.app.taskbarMediaButtons.launch
 
-import org.bh.tools.io.setup.CommandLineArg
-import org.bh.tools.io.setup.CommandLineArgProcessor
-import org.bh.tools.io.setup.CommandlineArgCollection
+import org.bh.app.taskbarMediaButtons.state.TMBStateController
+import org.bh.app.taskbarMediaButtons.state.TMBStateMutation.Companion.enableDebugMode
+import org.bh.tools.io.setup.*
 
 /**
- * @author Kyli Rouge
+ * @author Ben Leggiero
  * @since 2017-02-16
  */
 
 object commandLineArguments : CommandlineArgCollection() {
-    override val args: Array<CommandLineArg<*>> = arrayOf()
+    val debugArg = CompleteCommandLineArg('d', "debug", "Enables Debug mode", { _ ->
+        TMBStateController.shared { mutate(enableDebugMode) }
+    })
+
+    override val args: Array<CommandLineArg<*>> = arrayOf(
+            debugArg
+    )
 }
 
 
-object commandLineArgumentProcessor: CommandLineArgProcessor(commandLineArguments)
+object commandLineArgumentProcessor : CommandLineArgProcessor(commandLineArguments)

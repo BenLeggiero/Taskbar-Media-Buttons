@@ -1,22 +1,48 @@
 package org.bh.app.taskbarMediaButtons.launch
 
-import com.sun.deploy.uitoolkit.impl.awt.Applet2ImageFactory.createImage
+import org.bh.app.taskbarMediaButtons.Constants
+import org.bh.app.taskbarMediaButtons.state.TMBStateController
+import org.bh.app.taskbarMediaButtons.ui.images.PauseImage
+import org.bh.tools.base.collections.count
+import org.bh.tools.base.math.geometry.FractionSize
+import org.bh.tools.io.logging.log
 import java.awt.*
+import javax.swing.JOptionPane
 
 
 /**
- * @author Kyli Rouge
+ * @author Ben Leggiero
  * @since 2017-02-16 016.
  */
 class AppDelegate {
     fun start() {
-        addTestIcons()
-        showDebugDialog()
+        if (!SystemTray.isSupported()) {
+            val message = "${Constants.appName} is not supported on your computer."
+            log.severe(message)
+            JOptionPane.showMessageDialog(null, message, Constants.appName, JOptionPane.ERROR_MESSAGE)
+            System.exit(0)
+            return
+        }
+
+        TMBStateController.shared {
+            val icons = currentState().systemTrayIcons
+            if (icons.count < 1) {
+                showPreferencesPane()
+            }
+            org.bh.app.taskbarMediaButtons.ui.SystemTray.shared.addIcons(icons)
+        }
     }
+
+
+    fun showPreferencesPane() {
+        JOptionPane.showMessageDialog(null, "Preferences will go here one day", Constants.appName, JOptionPane.ERROR_MESSAGE)
+    }
+
 
     private fun showDebugDialog() {
         javax.swing.JOptionPane.showConfirmDialog(null, "Did it work?")
     }
+
 
     private fun addTestIcons() {
 
@@ -26,7 +52,7 @@ class AppDelegate {
             return
         }
         val popup = PopupMenu()
-        val trayIcon = TrayIcon(null)
+        val trayIcon = TrayIcon(PauseImage(FractionSize(16)).awtValue)
         val tray = SystemTray.getSystemTray()
 
         // Create a pop-up menu components
@@ -39,6 +65,9 @@ class AppDelegate {
         val infoItem = MenuItem("Info")
         val noneItem = MenuItem("None")
         val exitItem = MenuItem("Exit")
+        exitItem.addActionListener {
+            System.exit(0)
+        }
 
         //Add components to pop-up menu
         popup.add(aboutItem)
@@ -62,5 +91,4 @@ class AppDelegate {
         }
 
     }
-
 }
