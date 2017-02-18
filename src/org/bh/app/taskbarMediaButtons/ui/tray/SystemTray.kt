@@ -1,4 +1,6 @@
-package org.bh.app.taskbarMediaButtons.ui
+package org.bh.app.taskbarMediaButtons.ui.tray
+
+import org.bh.app.taskbarMediaButtons.ui.tray.SystemTrayButton
 
 /**
  * @author Ben Leggiero
@@ -13,12 +15,12 @@ class SystemTray {
     val awtValue: java.awt.SystemTray by lazy { java.awt.SystemTray.getSystemTray() }
 
 
-    fun addIcons(systemTrayIcons: Iterable<SystemTrayIcon>) {
+    fun addIcons(systemTrayIcons: Iterable<SystemTrayButton>) {
         systemTrayIcons.forEach { addIcon(it) }
     }
 
 
-    fun addIcon(systemTrayIcon: SystemTrayIcon) {
-        awtValue.add(systemTrayIcon.awtValue)
+    fun addIcon(systemTrayButton: SystemTrayButton) {
+        awtValue.add(systemTrayButton.awtValue)
     }
 }

@@ -31,7 +31,7 @@ class AppDelegate {
             if (icons.count < 1) {
                 showPreferencesPane()
             }
-            org.bh.app.taskbarMediaButtons.ui.SystemTray.shared.addIcons(icons)
+            org.bh.app.taskbarMediaButtons.ui.tray.SystemTray.shared.addIcons(icons)
         }
     }
 

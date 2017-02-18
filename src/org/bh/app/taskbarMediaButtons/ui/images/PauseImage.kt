@@ -10,7 +10,7 @@ import java.awt.Image
  * @author Ben Leggiero
  * @since 2017-02-17
  */
-class PauseImage(override val size: FractionSize) : SystemTrayImage {
+class PauseImage(override val size: FractionSize) : MediaButtonImage {
     override val awtValue: Image by lazy {
         val image = BufferedImage(size, BufferedImageType.argb)
         drawInGraphics(image.graphics)

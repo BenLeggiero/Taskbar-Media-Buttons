@@ -1,7 +1,9 @@
 package org.bh.app.taskbarMediaButtons.io
 
 import org.bh.app.taskbarMediaButtons.state.TMBRawState
-import org.bh.app.taskbarMediaButtons.ui.SystemTrayIcon
+import org.bh.app.taskbarMediaButtons.ui.tray.SystemTrayButton
+import org.bh.app.taskbarMediaButtons.ui.tray.buttons.PauseTrayButton
+import org.bh.tools.base.math.geometry.FractionSize
 import org.bh.tools.base.struct.DataAccessor
 
 /**
@@ -41,7 +43,7 @@ class TMBDataAccessor : DataAccessor<TMBRawState, TMBDataAccessor.Details, TMBDa
 
 
 
-val TMBRawState.Companion.default by lazy { TMBRawState(defaultTrayIcons, defaultIsDebugMode) }
+val TMBRawState.Companion.default by lazy { TMBRawState(DEFAULT_TRAY_BUTTONS, defaultIsDebugMode) }
 
-private val defaultTrayIcons: List<SystemTrayIcon> = listOf()
+private val DEFAULT_TRAY_BUTTONS: List<SystemTrayButton> = listOf(PauseTrayButton(FractionSize(16)))
 private val defaultIsDebugMode = false

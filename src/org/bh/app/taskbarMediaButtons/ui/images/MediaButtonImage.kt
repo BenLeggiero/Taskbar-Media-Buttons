@@ -7,7 +7,7 @@ import java.awt.Graphics
  * @author Ben Leggiero
  * @since 2017-02-17
  */
-interface SystemTrayImage {
+interface MediaButtonImage {
     val size: FractionSize
     val awtValue: java.awt.Image
 //    val swingValue: javax.swing.ImageIcon

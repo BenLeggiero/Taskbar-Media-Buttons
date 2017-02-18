@@ -1,7 +1,8 @@
 package org.bh.app.taskbarMediaButtons.state
 
-import org.bh.app.taskbarMediaButtons.ui.SystemTrayIcon
+import org.bh.app.taskbarMediaButtons.ui.tray.SystemTrayButton
 import org.bh.tools.base.state.StateMutator
+import org.bh.tools.io.logging.log
 
 /**
  * @author Ben Leggiero
@@ -10,10 +11,13 @@ import org.bh.tools.base.state.StateMutator
 class TMBStateMutator: StateMutator<TMBState, TMBStateMutation, TMBStateChange> {
     override fun mutating(state: TMBState, action: TMBStateMutation): TMBStateChange {
         return when (action) {
-            is TMBStateMutation.addNewTrayIcon -> TMBStateChange(systemTrayIcons = state.systemTrayIcons + action.newIcon)
-            is TMBStateMutation.removeTrayIcon -> TMBStateChange(systemTrayIcons = state.systemTrayIcons - action.dirtyIcon)
+            is TMBStateMutation.addNewTrayIcon -> TMBStateChange(systemTrayButtons = state.systemTrayIcons + action.newButton)
+            is TMBStateMutation.removeTrayIcon -> TMBStateChange(systemTrayButtons = state.systemTrayIcons - action.dirtyButton)
 
-            is TMBStateMutation.setDebugMode -> TMBStateChange(isDebugMode = action.newDebugMode)
+            is TMBStateMutation.setDebugMode -> {
+                log.info("Debug mode set to ${action.newDebugMode}")
+                TMBStateChange(isDebugMode = action.newDebugMode)
+            }
         }
     }
 }
@@ -21,8 +25,8 @@ class TMBStateMutator: StateMutator<TMBState, TMBStateMutation, TMBStateChange> 
 
 
 sealed class TMBStateMutation {
-    class addNewTrayIcon(val newIcon: SystemTrayIcon): TMBStateMutation()
-    class removeTrayIcon(val dirtyIcon: SystemTrayIcon): TMBStateMutation()
+    class addNewTrayIcon(val newButton: SystemTrayButton): TMBStateMutation()
+    class removeTrayIcon(val dirtyButton: SystemTrayButton): TMBStateMutation()
     class setDebugMode(val newDebugMode: Boolean): TMBStateMutation()
 
     companion object {

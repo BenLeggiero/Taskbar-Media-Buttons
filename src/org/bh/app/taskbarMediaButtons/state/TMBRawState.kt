@@ -1,6 +1,6 @@
 package org.bh.app.taskbarMediaButtons.state
 
-import org.bh.app.taskbarMediaButtons.ui.SystemTrayIcon
+import org.bh.app.taskbarMediaButtons.ui.tray.SystemTrayButton
 import org.bh.tools.base.struct.Data
 
 /**
@@ -8,7 +8,7 @@ import org.bh.tools.base.struct.Data
  * @since 2017-02-16
  */
 data class TMBRawState(
-        val systemTrayIcons: List<SystemTrayIcon>,
+        val systemTrayButtons: List<SystemTrayButton>,
         val isDebugMode: Boolean
 ): Data {
     companion object
